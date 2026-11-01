@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Dancing Script", cursive;
+  --color-blush: #ffe4ec;
+  --color-rose: #ff6b9a;
+  --color-lavender: #c4b5fd;
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  background: #22103f;
+  color: #ffe9f0;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.09);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(20, 5, 40, 0.35);
+}
+
+.grad-text {
+  background: linear-gradient(90deg, #ffd1e1, #ff6b9a 50%, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float-up {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.75; }
+  90% { opacity: 0.55; }
+  100% { transform: translate3d(var(--drift), -115vh, 0) rotate(var(--rot)); opacity: 0; }
+}
+@keyframes fall {
+  0% { transform: translate3d(0, -8vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.85; }
+  100% { transform: translate3d(var(--drift), 112vh, 0) rotate(var(--rot)); opacity: 0.85; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+@keyframes orb {
+  0% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  100% { transform: translate3d(6%, 5%, 0) scale(1.12); }
+}
+
+.fx-heart, .fx-petal, .fx-spark, .fx-orb { will-change: transform, opacity; }
+.fx-heart { animation: float-up var(--dur) linear var(--delay) infinite; }
+.fx-petal { animation: fall var(--dur) linear var(--delay) infinite; }
+.fx-spark { animation: twinkle var(--dur) ease-in-out var(--delay) infinite; }
+.fx-orb { animation: orb 18s ease-in-out infinite alternate; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-heart, .fx-petal, .fx-spark, .fx-orb { animation: none !important; opacity: 0.35; }
+}

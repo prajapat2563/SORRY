@@ -1,29 +1,33 @@
 # Adhya ke liye ❤️
 
-React + TypeScript + Tailwind CSS + Framer Motion + Lucide se bani romantic sorry website.
+Romantic Hinglish sorry website. React + TypeScript + Tailwind CSS + Framer Motion + Lucide.
 
-## Local pe chalane ke liye
+## GitHub Pages pe live karna (sabse aasan, bina build ke)
+
+Root mein `index.html` already bani-banayi (built) hai, isme saara code andar hi hai.
+
+1. GitHub pe naya repository banao.
+2. Is folder ki **saari files** (hidden `.nojekyll` aur `.github` folder samet) repo mein upload/push karo, branch `main`.
+3. Repo mein **Settings → Pages** kholo.
+4. **Source: Deploy from a branch**, **Branch: main**, **Folder: / (root)**, phir Save.
+5. 1-2 minute baad Pages ka link khul jayega (Settings → Pages ke upar dikhta hai).
+
+Agar white screen aaye: check karo ki Folder `/ (root)` select hai aur repo ke root mein `index.html` hai
+(kisi subfolder ke andar nahi). `app/index.html` ko host mat karo, wo sirf source hai.
+
+## Source code badalna (`app/` folder)
 
 ```bash
+cd app
 npm install
-npm run dev
+npm run dev      # local preview
+npm run build    # app/dist/index.html banti hai
 ```
 
-## Build
+Naya build live karna ho to `app/dist/index.html` ko root wali `index.html` ki jagah copy kar do aur push karo.
 
-```bash
-npm run build
-```
+Saara text `app/src/screens/` mein hai. Letter ke end mein apna naam `app/src/screens/Letter.tsx` mein "Tumhara..." ke baad jodo.
 
-`dist/index.html` ek single file banti hai (saara JS/CSS andar hi hota hai), isko kahin bhi host kar sakte ho.
+## Optional: GitHub Actions se auto build
 
-## GitHub Pages pe live karna
-
-1. GitHub pe naya repository banao aur ye poora folder push karo (branch: `main`).
-2. Repository mein **Settings → Pages** kholo aur **Source** mein **GitHub Actions** select karo.
-3. Push hote hi `.github/workflows/deploy.yml` build karke site deploy kar dega.
-4. Site ka link **Settings → Pages** mein ya **Actions** tab ke deploy step mein milega.
-
-## Text badalna
-
-Saara text `src/screens/` ke andar hai. Letter ke end mein apna naam `src/screens/Letter.tsx` mein "Tumhara..." ki jagah likh sakte ho.
+Pages ka Source "GitHub Actions" rakho, phir Actions tab se "Build and deploy (optional)" manually run karo.
